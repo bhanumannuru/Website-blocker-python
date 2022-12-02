@@ -29,6 +29,11 @@ def block_websites(start_hour, end_hour):
                 for site in sites_to_block:
                     if site not in hosts:
                         hostfile.write(redirect + " " + site + "\n")
+                        with open(default_hoster, "r+") as hostfile:
+                hosts = hostfile.read()
+                for site in sites_to_block:
+                    if site not in hosts:
+                        hostfile.write(redirect + " " + site + "\n")
         else:
             with open(default_hoster, "r+") as hostfile:
                 hosts = hostfile.readlines()
